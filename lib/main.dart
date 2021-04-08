@@ -19,8 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => CustomerDashboardScreen(),
+        '/': (context) => SplashScreen(),
         'login': (context) => LoginScreen(),
+        'register': (context) => RegisterScreen(),
+        'dashboard': (context) => CustomerDashboardScreen()
       },
     );
   }

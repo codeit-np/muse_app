@@ -6,6 +6,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  void checkAuth() {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushNamed(context, 'login');
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkAuth();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

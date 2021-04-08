@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/pages/product.dart';
+import 'package:muse_app/pages/service.dart';
 
 class HomeComponent extends StatelessWidget {
   Future getDetails(String endPoint) async {
@@ -36,18 +39,28 @@ class HomeComponent extends StatelessWidget {
                       itemCount: snapshot.data.length,
                       itemBuilder: (contex, index) {
                         var mydata = snapshot.data[index];
-                        return Container(
-                          width: 150,
-                          height: 150,
-                          child: Card(
-                              child: Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        "http://192.168.0.101:8000/" +
-                                            mydata['image']),
-                                    fit: BoxFit.cover)),
-                          )),
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ServiceScreen(
+                                          serviceID: mydata['id'],
+                                        )));
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            child: Card(
+                                child: Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "http://192.168.1.100:8000/" +
+                                              mydata['image']),
+                                      fit: BoxFit.cover)),
+                            )),
+                          ),
                         );
                       },
                     );
@@ -78,6 +91,14 @@ class HomeComponent extends StatelessWidget {
                       return Card(
                         elevation: .2,
                         child: ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductScreen(
+                                          productID: mydata['id'],
+                                        )));
+                          },
                           leading: Container(
                             padding: EdgeInsets.all(10),
                             width: 80,
@@ -85,7 +106,7 @@ class HomeComponent extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: NetworkImage(
-                                        "http://192.168.0.101:8000/" +
+                                        "http://192.168.1.100:8000/" +
                                             mydata['image']),
                                     fit: BoxFit.cover)),
                           ),

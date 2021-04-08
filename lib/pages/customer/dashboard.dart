@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muse_app/component/home.dart';
+import 'package:muse_app/component/profile.dart';
 
 class CustomerDashboardScreen extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
           ? HomeComponent()
           : index == 1
               ? Text("Map Page")
-              : Text("Profile Page"),
+              : ProfileComponent(),
     );
   }
 }
