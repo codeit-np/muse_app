@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/const/const.dart';
 
 class ServiceScreen extends StatefulWidget {
   final int serviceID;
@@ -44,8 +45,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      "http://192.168.1.100:8000/" +
-                                          snapshot.data['image']),
+                                      link + snapshot.data['image']),
                                   fit: BoxFit.cover)),
                         ),
                         SizedBox(

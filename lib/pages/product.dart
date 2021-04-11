@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/const/const.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -51,8 +52,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      "http://192.168.1.100:8000/" +
-                                          snapshot.data['image']),
+                                      link + snapshot.data['image']),
                                   fit: BoxFit.cover)),
                         ),
                         SizedBox(

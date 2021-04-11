@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/component/inputText.dart';
+import 'package:muse_app/const/const.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,8 +12,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,25 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       size: 50,
                     ),
                     //Email
-                    TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email),
-                        labelText: 'Email',
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                    ),
+                    inputText(email, Icons.email, 'Email',
+                        TextInputType.emailAddress, false, true),
                     //Password
-                    TextFormField(
-                      controller: password,
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock),
-                          labelText: 'Your secret password',
-                          suffixIcon: IconButton(
-                              icon: Icon(Icons.visibility), onPressed: () {})),
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: true,
-                    ),
+                    inputText(password, Icons.lock, 'Password',
+                        TextInputType.text, true, true),
+
                     //Login Button
                     Row(
                       children: [

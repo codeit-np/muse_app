@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muse_app/component/home.dart';
 import 'package:muse_app/component/profile.dart';
+import 'package:muse_app/component/search.dart';
 
 class CustomerDashboardScreen extends StatefulWidget {
   @override
@@ -13,15 +14,20 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           index = value;
           setState(() {});
         },
         currentIndex: index,
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.black,
+        showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.map_sharp), label: 'Map'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
@@ -32,7 +38,9 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
           ? HomeComponent()
           : index == 1
               ? Text("Map Page")
-              : ProfileComponent(),
+              : index == 2
+                  ? Search()
+                  : ProfileComponent(),
     );
   }
 }

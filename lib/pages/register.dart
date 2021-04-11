@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/component/inputText.dart';
+import 'package:muse_app/const/const.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -10,9 +12,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
-  TextEditingController name = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,36 +30,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       size: 50,
                     ),
                     // Name
-                    TextFormField(
-                      controller: name,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person),
-                        labelText: 'Full Name',
-                      ),
-                      validator: (value) => value.isEmpty ? 'required' : null,
-                    ),
+                    inputText(name, Icons.person_add, 'Full Name',
+                        TextInputType.text, false, true),
                     //Email
-                    TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email),
-                        labelText: 'Email',
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) => value.isEmpty ? 'required' : null,
-                    ),
+                    inputText(email, Icons.email, 'Email',
+                        TextInputType.emailAddress, false, true),
+
+                    //Mobile
+                    inputText(mobile, Icons.call, 'Mobile', TextInputType.phone,
+                        false, true),
+
                     //Password
-                    TextFormField(
-                      controller: password,
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock),
-                          labelText: 'Your secret password',
-                          suffixIcon: IconButton(
-                              icon: Icon(Icons.visibility), onPressed: () {})),
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: true,
-                      validator: (value) => value.isEmpty ? 'required' : null,
-                    ),
+                    inputText(password, Icons.lock, 'Password',
+                        TextInputType.text, true, true),
+
                     //Login Button
                     Row(
                       children: [
@@ -71,6 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       "name": name.text,
                                       "email": email.text,
                                       "password": password.text,
+                                      "mobile": mobile.text,
                                       "is_admin": 0
                                     };
 
