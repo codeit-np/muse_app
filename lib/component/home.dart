@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/const/const.dart';
 import 'package:muse_app/pages/product.dart';
 import 'package:muse_app/pages/service.dart';
 
@@ -54,9 +55,8 @@ class HomeComponent extends StatelessWidget {
                                 child: Container(
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          "http://192.168.1.100:8000/" +
-                                              mydata['image']),
+                                      image:
+                                          NetworkImage(link + mydata['image']),
                                       fit: BoxFit.cover)),
                             )),
                           ),
@@ -104,9 +104,7 @@ class HomeComponent extends StatelessWidget {
                             height: 80,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: NetworkImage(
-                                        "http://192.168.1.100:8000/" +
-                                            mydata['image']),
+                                    image: NetworkImage(link + mydata['image']),
                                     fit: BoxFit.cover)),
                           ),
                           title: Text(mydata['name'].toString()),

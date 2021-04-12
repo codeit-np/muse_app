@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -6,10 +7,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void checkAuth() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, 'login');
-    });
+  void checkAuth() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String token = preferences.getString('token');
+    if (token != null) {
+      Future.delayed(Duration(seconds: 3), () {
+        Navigator.popAndPushNamed(context, 'dashboard');
+      });
+    } else {
+      Future.delayed(Duration(seconds: 3), () {
+        Navigator.popAndPushNamed(context, 'login');
+      });
+    }
   }
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
 import 'package:muse_app/component/inputText.dart';
 import 'package:muse_app/const/const.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -73,6 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
 
                                     if (result['user']['is_admin'] == 0) {
+                                      SharedPreferences preferences =
+                                          await SharedPreferences.getInstance();
+                                      preferences.setString(
+                                          'token', result['token']);
                                       Navigator.popAndPushNamed(
                                           context, 'dashboard');
                                     } else {

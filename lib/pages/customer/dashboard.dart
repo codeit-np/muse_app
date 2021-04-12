@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muse_app/component/drawer.dart';
 import 'package:muse_app/component/home.dart';
 import 'package:muse_app/component/profile.dart';
 import 'package:muse_app/component/search.dart';
@@ -14,7 +15,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: myDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           index = value;
