@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:muse_app/api/api.dart';
+import 'package:muse_app/component/inputText.dart';
 import 'package:muse_app/const/const.dart';
 
 class ServiceScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Service"),
+        title: Text("Service Details"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -70,7 +71,40 @@ class _ServiceScreenState extends State<ServiceScreen> {
                                   : Text(snapshot.data['description']),
                               Divider(),
                               ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (builder) {
+                                          return AlertDialog(
+                                            title: Text("Make an Appointment"),
+                                            content: Container(
+                                              height: 200,
+                                              child: Column(
+                                                children: [
+                                                  inputText(
+                                                      serviceName,
+                                                      Icons
+                                                          .miscellaneous_services_rounded,
+                                                      'Service',
+                                                      TextInputType.text,
+                                                      false,
+                                                      false)
+                                                ],
+                                              ),
+                                            ),
+                                            actions: [
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("Calcel")),
+                                              ElevatedButton(
+                                                  onPressed: () {},
+                                                  child: Text("Confirm"))
+                                            ],
+                                          );
+                                        });
+                                  },
                                   child: Text("Make an Appointment"))
                             ],
                           ),

@@ -18,9 +18,19 @@ Widget myDrawer() {
         ),
         ListTile(
           onTap: () {},
-          leading: Icon(Icons.dashboard),
-          title: Text("Dashboard"),
-        )
+          leading: Icon(Icons.food_bank),
+          title: Text("Products"),
+        ),
+        ListTile(
+          onTap: () {},
+          leading: Icon(Icons.supervised_user_circle),
+          title: Text("Services"),
+        ),
+        ListTile(
+          onTap: () {},
+          leading: Icon(Icons.logout),
+          title: Text("Logout"),
+        ),
       ],
     ),
   );

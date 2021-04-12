@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muse_app/component/drawer.dart';
 import 'package:muse_app/component/home.dart';
+import 'package:muse_app/component/map.dart';
 import 'package:muse_app/component/profile.dart';
 import 'package:muse_app/component/search.dart';
 
@@ -15,6 +16,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       drawer: myDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
@@ -38,7 +40,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
       body: index == 0
           ? HomeComponent()
           : index == 1
-              ? Text("Map Page")
+              ? mapWidget()
               : index == 2
                   ? Search()
                   : ProfileComponent(),
