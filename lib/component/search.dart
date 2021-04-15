@@ -51,6 +51,8 @@ class _SearchState extends State<Search> {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
+                case ConnectionState.none:
+                  return Text("hello");
                 default:
                   // return Text(snapshot.data[0]['products'][0]['name']);
                   return Column(
@@ -58,7 +60,11 @@ class _SearchState extends State<Search> {
                       ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data[0]['products'].length,
+                        itemCount: snapshot.data[0]['products'].length
+                                .toString()
+                                .isEmpty
+                            ? 0
+                            : snapshot.data[0]['products'].length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
@@ -126,8 +132,13 @@ class _SearchState extends State<Search> {
                       ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data[0]['services'].length,
+                        itemCount: snapshot.data[0]['services'].length
+                                .toString()
+                                .isEmpty
+                            ? 0
+                            : snapshot.data[0]['services'].length,
                         itemBuilder: (context, index) {
+                          print(snapshot.data[0]['services'].length);
                           return Column(
                             children: [
                               GestureDetector(

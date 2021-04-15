@@ -31,7 +31,8 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.map_sharp), label: 'Map'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.event_available), label: 'Ticket'),
         ],
       ),
       appBar: AppBar(
