@@ -17,7 +17,7 @@ class _CustomerDashboardScreenState extends State<CustomerDashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      drawer: myDrawer(),
+      drawer: myDrawer(context),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           index = value;

@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-Widget myDrawer() {
+import 'package:flutter/material.dart';
+import 'package:muse_app/api/api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Widget myDrawer(context) {
   return Drawer(
     child: ListView(
       children: [
@@ -17,17 +21,32 @@ Widget myDrawer() {
           title: Text("Dashboard"),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, 'productlist');
+          },
           leading: Icon(Icons.food_bank),
           title: Text("Products"),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, 'servicelist');
+          },
           leading: Icon(Icons.supervised_user_circle),
           title: Text("Services"),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () async {
+            Map data = {};
+            var response = await Api().postData(data, 'logout');
+            var result = json.decode(response.body);
+            print(result);
+            if (result['message'] == 'success') {
+              SharedPreferences preferences =
+                  await SharedPreferences.getInstance();
+              preferences.remove('token');
+              Navigator.popAndPushNamed(context, 'login');
+            }
+          },
           leading: Icon(Icons.logout),
           title: Text("Logout"),
         ),

@@ -5,7 +5,7 @@ import 'package:latlong/latlong.dart';
 Widget mapWidget() {
   return FlutterMap(
     options: MapOptions(
-      center: LatLng(26.818974, 87.286377),
+      center: LatLng(26.663171, 87.637187),
       zoom: 16.0,
     ),
     layers: [
@@ -17,7 +17,7 @@ Widget mapWidget() {
           Marker(
             width: 80.0,
             height: 80.0,
-            point: LatLng(26.818974, 87.286377),
+            point: LatLng(26.663171, 87.637187),
             builder: (ctx) => Container(
               child: Icon(
                 Icons.place,

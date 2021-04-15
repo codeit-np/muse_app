@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:muse_app/pages/customer/dashboard.dart';
 import 'package:muse_app/pages/login.dart';
+import 'package:muse_app/pages/product_list.dart';
 import 'package:muse_app/pages/register.dart';
+import 'package:muse_app/pages/service_list.dart';
 import 'package:muse_app/pages/splash.dart';
 
 void main() {
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         'login': (context) => LoginScreen(),
         'register': (context) => RegisterScreen(),
-        'dashboard': (context) => CustomerDashboardScreen()
+        'dashboard': (context) => CustomerDashboardScreen(),
+        'productlist': (context) => ProductListScreen(),
+        'servicelist': (context) => ServiceListScreen(),
       },
     );
   }
