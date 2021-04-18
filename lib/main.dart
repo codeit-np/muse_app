@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muse_app/pages/change_password.dart';
 import 'package:muse_app/pages/customer/dashboard.dart';
 import 'package:muse_app/pages/login.dart';
 import 'package:muse_app/pages/product_list.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         'dashboard': (context) => CustomerDashboardScreen(),
         'productlist': (context) => ProductListScreen(),
         'servicelist': (context) => ServiceListScreen(),
+        'changepassword': (context) => ChangePasswordScreen(),
       },
     );
   }

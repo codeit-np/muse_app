@@ -34,6 +34,14 @@ Widget myDrawer(context) {
           leading: Icon(Icons.supervised_user_circle),
           title: Text("Services"),
         ),
+        Divider(),
+        ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, 'changepassword');
+          },
+          leading: Icon(Icons.lock_clock),
+          title: Text("Change Password"),
+        ),
         ListTile(
           onTap: () async {
             Map data = {};
